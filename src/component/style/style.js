@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
-export const Title = styled.h5`
-  font-size: 60px;
-  color : #333;
-  @media(max-width : 1050px){
-    font-size: 40px;
+export const Title = styled.h3`
+  font-size: 30px;
+  color : #fff;
+  text-align: center;
+  margin: 20px 0px;
+  @media(max-width : 768px){
+    font-size: 18px;
   }
 `
 export const Button = styled.button`
@@ -38,6 +40,6 @@ export const Container = styled.div`
     width : 960px;
   }
   @media(min-width : 1200px){
-    width : 1140px;
+    width : 95%;
   }
 ` 

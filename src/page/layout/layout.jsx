@@ -41,7 +41,7 @@ const Layout = () => {
       </div>
       <Footer />
       <div className='fixed lg:top-[-60px] bottom-0 lg:right-0 w-[120px] h-[120px] rounded-full bg-main-color lg:block hidden'></div>
-      <NavButton onClick={handleShowNav} className='absolute top-2 right-2'>
+      <NavButton onClick={handleShowNav} >
         {nav ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}
       </NavButton>
     </>
@@ -52,7 +52,7 @@ export default Layout
 
 const NavButton = styled.button`
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   padding: 5px;
   width: 60px;

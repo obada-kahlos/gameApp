@@ -36,11 +36,9 @@ const getGameListDataSlice = createSlice({
         [listOfGame.fulfilled]: (state, action) => {
             state.isLoading = false
             state.dataList = action.payload.data
-            console.log(action.payload)
         },
         [listOfGame.rejected]: (state, action) => {
             state.isLoading = false
-            console.log(action.payload)
         }
 
     }

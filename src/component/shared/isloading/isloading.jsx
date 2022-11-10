@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const IsLoading = () => {
     return (
         <IsLoadingContainer>
-            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             <style>
                 {`
                 .lds-roller {

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter , Routes, Route, useNavigate, } from "react-router-dom";
 import Genres from "./component/genres/genres";
 import Login from "./component/login/login";
-import Movies from "./component/movies/movies";
+import MainPage from "./page/main-page/main-page";
 import SignUp from "./component/signup/signup";
 
 import Register from "./page/register/register";
@@ -25,11 +25,10 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="/" element={<Layout /> }>
-              <Route path="/" element={<Movies />} />
+              <Route path="/" element={<MainPage />} />
               <Route path='popular' element={<PopularMovies />} />
               <Route path='favorite-movies' element={<FavoriteMovies />} />
             </Route>
-
             <Route path=":id" element={<Info />} />
             <Route path="*" element={<PageNotFound />} />
         </Routes>

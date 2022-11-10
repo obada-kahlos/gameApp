@@ -7,15 +7,15 @@ const Navbar = ({nav}) => {
         {
             to: '/',
             icon: 'tv-outline',
-            title: 'Movies',
+            title: 'Home',
         },
         {
-            to: 'o',
+            to: '/o',
             icon: 'color-palette-outline',
             title: 'Genres'
         },
         {
-            to: 'o',
+            to: '/o',
             icon: 'earth-outline',
             title: 'Top Movies',
         },
@@ -25,7 +25,6 @@ const Navbar = ({nav}) => {
             title: 'popular',
         }
     ]
-
     return (
         <Nav active={nav}>
             <Ul>
