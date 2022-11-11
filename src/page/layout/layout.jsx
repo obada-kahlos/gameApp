@@ -6,6 +6,7 @@ import Footer from '../../component/footer/footer'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { listOfGame } from '../../feature/game-list-slice'
+import { Container } from '../../component/style/style'
 
 const Layout = () => {
 

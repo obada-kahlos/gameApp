@@ -28,8 +28,8 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path='tag' element={<GameByTag />} />
             <Route path='favorite-movies' element={<FavoriteMovies />} />
+            <Route path="info:id" element={<Info />} />
           </Route>
-          <Route path="info:id" element={<Info />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
