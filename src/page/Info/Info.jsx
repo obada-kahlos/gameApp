@@ -17,16 +17,10 @@ const Info = () => {
     const { dataList } = useSelector((state) => state.gameList)
     const [showText, setShowText] = useState(false)
     const params = useParams()
-    console.log(params.id.replace(':', ''));
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(gameById(params.id.replace(':', '')))
     }, [dispatch,params])
-
-    const handleResetData = () => {
-        dispatch(resetData())
-    }
-
     return (
         <>
             {
@@ -50,7 +44,7 @@ const Info = () => {
                                     <img src={data?.thumbnail} alt={data?.title} className='md:w-full w-[350px]' />
                                 </LazyLoad>
                             </div>
-                            <div className='md:col-span-8 col-span-12 md:mt-[95px] mt-[30px]'>
+                            <div className='md:col-span-8 col-span-12 md:mt-[65px] mt-[30px]'>
                                 <h2 className='text-white md:text-[26px] text-[20px]'> About the game. </h2>
                                 <p className='text-[16px] text-[#fff] '> {
                                     showText ?
@@ -98,7 +92,7 @@ const Info = () => {
                 <Title className='text-[30px] text-white text-center mb-[20px]'>Games you may like.</Title>
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
-                        dataList.slice(124, 128).map((game) => (
+                        dataList.slice(124,128).map((game) => (
                             <Link to={`/info:${ game.id }`}>
                                 <GameCard
                                     key={game.id}
@@ -115,7 +109,6 @@ const Info = () => {
                 </div>
             </Container>
         </>
-
     )
 }
 

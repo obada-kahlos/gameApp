@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Title } from '../../component/style/style';
 
 
-import cenamaImage from '../../assets/cenama.jpg'
 import IsLoading from '../../component/shared/isloading/isloading';
 import { listOfGame } from '../../feature/game-list-slice';
 import ListOfButtons from '../../component/shared/list-of-buttons/list-of-buttons';

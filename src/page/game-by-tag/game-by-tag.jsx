@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import LazyLoad from 'react-lazyload'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -6,19 +6,22 @@ import styled from 'styled-components'
 import Container from '../../component/shared/container/container'
 import IsLoading from '../../component/shared/isloading/isloading'
 import Tag from '../../component/shared/tag/tag'
-import { Title } from '../../component/style/style'
+import { Button, Title } from '../../component/style/style'
 import { gameByTag } from '../../feature/game-by-tag-slice'
-import { popularMovies } from '../../feature/popular-movies-slice'
 
 const GameByTag = () => {
-
     const { gameByTagData, isLoading } = useSelector((state) => state.gameByTag)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(popularMovies())
         dispatch(gameByTag('shooter'))
     }, [,])
-    console.log(gameByTagData);
+    const [showMore, setShowMore] = useState(17)
+    const handleShowMore = () => {
+        setShowMore(showMore + 9)
+    }
+    const handleShowLess = () => {
+        setShowMore(showMore - 9)
+    }
     return (
         <>
             {
@@ -36,8 +39,8 @@ const GameByTag = () => {
                         <Title> Games By Tag. </Title>
                         <div className='grid grid-cols-12 lg:gap-10 gap-4'>
                             {
-                                gameByTagData.slice(8, 16).map((game) => (
-                                    <Wrapper className='md:col-span-6 col-span-12 cursor-pointer' key={game.id}>
+                                gameByTagData.slice(8, showMore).map((game) => (
+                                    <Wrapper className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer' key={game.id}>
                                         <Link to={`/info:${ game.id }`}>
                                             <div className=''>
                                                 <div className='relative overflow-hidden'>
@@ -66,6 +69,12 @@ const GameByTag = () => {
                                         </Link>
                                     </Wrapper>
                                 ))
+                            }
+                        </div>
+                        <div className='my-[30px] flex justify-center items-center gap-4'>
+                            <Button onClick={handleShowMore}> Show More </Button>
+                            {
+                                showMore > 17 ? <Button onClick={handleShowLess}> Show Less </Button> : null
                             }
                         </div>
                     </Container>

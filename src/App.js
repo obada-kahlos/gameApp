@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, } from "react-router-dom";
-import Genres from "./component/genres/genres";
 import Login from "./component/login/login";
 import MainPage from "./page/main-page/main-page";
 import SignUp from "./component/signup/signup";
