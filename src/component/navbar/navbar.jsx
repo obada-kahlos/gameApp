@@ -12,12 +12,12 @@ const Navbar = ({ nav }) => {
         },
         {
             to: '404',
-            icon: 'earth-outline',
+            icon: 'alert-circle-outline',
             title: '404',
         },
         {
             to: 'tag',
-            icon: 'bar-chart-outline',
+            icon: 'game-controller-outline',
             title: 'Games By Tag ',
         }
     ]
