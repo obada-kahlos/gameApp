@@ -17,6 +17,7 @@ const Loader = () => {
                 width:40px;
                 height: 40px;
                 margin-bottom : 25px;
+                margin-right: 50px;
             }
             .lds-ellipsis div {
                 position: absolute;

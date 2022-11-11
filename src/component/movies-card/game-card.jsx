@@ -4,9 +4,9 @@ import Tag from '../shared/tag/tag'
 
 const GameCard = ({ image, alt, width, height, margin, title, description, className, genre }) => {
   return (
-    <Container className={className} width={width} height={height} margin={margin}>
+    <Container className={className} width={width}  margin={margin}>
       <div className='h-full'>
-        <Img src={image} alt={alt} />
+        <Img src={image} alt={alt} height={height}/>
       </div>
       <div className='h-[180px] flex justify-between flex-col'>
         <Title className='my-[5px]'> {title} </Title>

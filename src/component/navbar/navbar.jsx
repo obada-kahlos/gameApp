@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from '../style/style'
 
-const Navbar = ({ nav }) => {
+const Navbar = ({ nav, handleShowNav }) => {
     const navbarData = [
         {
             to: '/',
@@ -19,14 +19,19 @@ const Navbar = ({ nav }) => {
             to: 'tag',
             icon: 'game-controller-outline',
             title: 'Games By Tag ',
-        }
+        },
+        {
+            to: 'pricing',
+            icon: 'alert-circle-outline',
+            title: 'pricing',
+        },
     ]
     return (
         <Nav active={nav}>
             <Ul>
                 {
                     navbarData.map((item, key) => (
-                        <LinkElem to={item.to} key={key}>
+                        <LinkElem to={item.to} key={key} onClick={handleShowNav}>
                             <Li>
                                 <span className='flex items-center justify-center'> <ion-icon name={item.icon}></ion-icon> </span>
                                 <span className='flex justify-center items-center'> {item.title} </span>
@@ -37,7 +42,7 @@ const Navbar = ({ nav }) => {
             </Ul>
             <Wrapper className=''>
                 <Button> Login </Button>
-                <NavLink to='favorite-movies'>
+                <NavLink to='favorite-movies' onClick={handleShowNav}>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
                     </Heart>

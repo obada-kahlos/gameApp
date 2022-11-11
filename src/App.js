@@ -10,6 +10,7 @@ import Layout from "./page/layout/layout";
 import FavoriteMovies from "./page/favorite-movies/favorite-movies";
 import PageNotFound from "./page/page-not-found/page-not-found";
 import Info from "./page/Info/Info";
+import Pricing from "./page/pricing/pricing";
 
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path='tag' element={<GameByTag />} />
             <Route path='favorite-movies' element={<FavoriteMovies />} />
             <Route path="info:id" element={<Info />} />
+            <Route path="pricing" element={<Pricing />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

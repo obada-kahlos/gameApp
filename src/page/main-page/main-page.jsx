@@ -86,7 +86,7 @@ const MainPage = () => {
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                   {
                     dataList.slice(0, 8).map((game) => (
-                      <Link to={`/info:${game.id}`}>
+                      <Link to={`/info:${ game.id }`}>
                         <GameCard
                           key={game.id}
                           alt={game.title}
@@ -95,6 +95,7 @@ const MainPage = () => {
                           description={game.short_description.slice(0, 70)}
                           genre={game.genre}
                           width={'300px'}
+                          height={'190px'}
                         />
                       </Link>
                     ))
@@ -111,7 +112,7 @@ const MainPage = () => {
                   <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
                       platformData.slice(20, showMore).map((game) => (
-                        <Link to={`/info:${game.id}`}>
+                        <Link to={`/info:${ game.id }`}>
                           <GameCard
                             key={game.id}
                             alt={game.title}
@@ -120,6 +121,7 @@ const MainPage = () => {
                             description={game.short_description.slice(0, 70)}
                             genre={game.genre}
                             width={'300px'}
+                            height={'190px'}
                           />
                         </Link>
                       ))
@@ -129,7 +131,7 @@ const MainPage = () => {
               <div className='my-[30px] flex justify-center items-center gap-4'>
                 <Button onClick={handleShowMore}> Show More </Button>
                 {
-                  showMore > 32 ?  <Button onClick={handleShowLess}> Show Less </Button> : null
+                  showMore > 32 ? <Button onClick={handleShowLess}> Show Less </Button> : null
                 }
               </div>
             </Container>
@@ -157,11 +159,9 @@ const Header = styled.header`
   @media(max-width : 1024px){
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 30px;
   };
   @media(max-width : 768px){
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 30px;
   }
 `

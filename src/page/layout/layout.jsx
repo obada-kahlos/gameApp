@@ -36,7 +36,7 @@ const Layout = () => {
 
   return (
     <>
-      <Navbar nav={nav} />
+      <Navbar nav={nav} handleShowNav={handleShowNav}/>
       <div>
         <Outlet />
       </div>
