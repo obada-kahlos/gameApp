@@ -5,7 +5,7 @@ import { gameById } from '../../feature/game-by-id-slice';
 import { movieActors, movieImage } from '../../feature/get-movies-info-slice';
 
 const Info = () => {
-    const { isLoading } = useSelector((state) => state.gameById)
+    const { isLoading , data } = useSelector((state) => state.gameById)
     const params = useParams()
     console.log(params.id.replace(':', ''));
     const dispatch = useDispatch()
@@ -14,7 +14,21 @@ const Info = () => {
     }, [dispatch])
     return (
         <>
-            <div className='text-[#fff]'>game</div>
+            <div className='text-[#fff]'>
+                <h1> {data.title} </h1>
+                <img src={data.thumbnail} alt={data.title} />
+                <p> {data.description} </p>
+                <p> {data.short_description} </p>
+                <p> {data.developer} </p>
+                <p> {data.platform} </p>
+                <p> {data.publisher} </p>
+                <p> {data.release_date} </p>
+                {
+                    data.screenshots.map((image)=>(
+                        <img src={image.image} alt="img" />
+                    ))
+                }
+            </div>
         </>
 
     )

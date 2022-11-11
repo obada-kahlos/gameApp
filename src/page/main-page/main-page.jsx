@@ -111,15 +111,17 @@ const MainPage = () => {
                   <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
                       platformData.slice(20, showMore).map((game) => (
-                        <GameCard
-                          key={game.id}
-                          alt={game.title}
-                          image={game.thumbnail}
-                          title={game.title}
-                          description={game.short_description.slice(0, 70)}
-                          genre={game.genre}
-                          width={'300px'}
-                        />
+                        <Link to={`/info:${game.id}`}>
+                          <GameCard
+                            key={game.id}
+                            alt={game.title}
+                            image={game.thumbnail}
+                            title={game.title}
+                            description={game.short_description.slice(0, 70)}
+                            genre={game.genre}
+                            width={'300px'}
+                          />
+                        </Link>
                       ))
                     }
                   </div>
