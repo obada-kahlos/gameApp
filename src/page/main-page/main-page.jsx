@@ -8,7 +8,7 @@ import GameCard from '../../component/movies-card/game-card';
 
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Title } from '../../component/style/style';
+import { Button, Title } from '../../component/style/style';
 
 
 import cenamaImage from '../../assets/cenama.jpg'
@@ -18,6 +18,7 @@ import ListOfButtons from '../../component/shared/list-of-buttons/list-of-button
 import { platform } from '../../feature/games-by-platform-slice';
 import Loader from '../../component/loader/loader';
 import { Link } from 'react-router-dom';
+import Container from '../../component/shared/container/container';
 const MainPage = () => {
 
 
@@ -107,7 +108,7 @@ const MainPage = () => {
               <Title> Games by platform. </Title>
               <ListOfButtons items={platformButtons} />
               {
-                isLoadingPlatform ? <div className='flex justify-center items-center h-[600px]'> <Loader /> </div> :
+                isLoadingPlatform ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div> :
                   <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
                       platformData.slice(20, showMore).map((game) => (
@@ -148,8 +149,8 @@ const Header = styled.header`
   background-position: center;
   background-size: cover;
   position: relative;
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 30px;
   padding-right: 30px;
   overflow: hidden;
@@ -164,19 +165,4 @@ const Header = styled.header`
     padding-right: 5px;
     padding-top: 30px;
   }
-`
-const MoviesType = styled.div`
-      &:after{
-        position: absolute;
-        content : '';
-        bottom: 10px;
-        left: 0;
-        height : 3px;
-        width: 70%;
-        background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
-    }
-`
-const Section = styled.section`
-      padding: 40px 0;
-      background: url(${ cenamaImage }) center center / cover no-repeat;
 `

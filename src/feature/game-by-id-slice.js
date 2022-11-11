@@ -26,6 +26,9 @@ export const gameById = createAsyncThunk('id/gameById', async (id, thunkAPI) => 
 const GameByIdSlice = createSlice({
     name: 'id',
     initialState,
+    reducers: {
+        resetData: () => initialState,
+    },
     extraReducers: {
         [gameById.pending]: (state, action) => {
             state.isLoading = true
@@ -40,4 +43,5 @@ const GameByIdSlice = createSlice({
     }
 })
 
-export default GameByIdSlice.reducer 
+export default GameByIdSlice.reducer
+export const { resetData } = GameByIdSlice.actions

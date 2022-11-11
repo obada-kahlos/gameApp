@@ -59,7 +59,7 @@ const NavButton = styled.button`
   height: 60px;
   border-radius: 50%;
   border: 2px solid #fff;
-  background-color: rgba(73, 198, 40,0.4);
+  backdrop-filter: blur(20px);
   color: #fff;
   display: flex;
   justify-content: center;
@@ -69,6 +69,5 @@ const NavButton = styled.button`
   transition: 0.4s;
   &:hover{
     box-shadow: 0px 4px 20px 0px #49c628a6;
-    background-color: rgba(73, 198, 40,1);
   }
 `

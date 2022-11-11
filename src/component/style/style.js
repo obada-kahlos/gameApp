@@ -20,29 +20,5 @@ export const Button = styled.button`
   @media(max-width : 768px){
     font-size: 14px;
     padding: 7px 35px;
-    margin: 20px 0px;
   }
 `
-
-export const Container = styled.div`
-  padding-right: 15px;
-  padding-left: 15px;
-  padding: 120px 0px;
-  margin-right: auto;
-  margin-left: auto;
-  @media(min-width: 650px){
-    width: 540px;
-    padding: 30px 0px;
-  }
-  @media(min-width: 768px){
-    width : 768px;
-    padding: 30px 0px;
-
-  }
-  @media(min-width : 992px){
-    width : 960px;
-  }
-  @media(min-width : 1200px){
-    width : 95%;
-  }
-` 

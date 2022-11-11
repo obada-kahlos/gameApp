@@ -11,14 +11,9 @@ const Navbar = ({ nav }) => {
             title: 'Home',
         },
         {
-            to: 'o',
-            icon: 'color-palette-outline',
-            title: 'Genres'
-        },
-        {
-            to: 'o',
+            to: '404',
             icon: 'earth-outline',
-            title: 'Top Movies',
+            title: '404',
         },
         {
             to: 'tag',
@@ -34,19 +29,19 @@ const Navbar = ({ nav }) => {
                         <LinkElem to={item.to} key={key}>
                             <Li>
                                 <span className='flex items-center justify-center'> <ion-icon name={item.icon}></ion-icon> </span>
-                                <span> {item.title} </span>
+                                <span className='flex justify-center items-center'> {item.title} </span>
                             </Li>
                         </LinkElem>
                     ))
                 }
             </Ul>
             <Wrapper className=''>
+                <Button> Login </Button>
                 <NavLink to='favorite-movies'>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
                     </Heart>
                 </NavLink>
-                <Button> Login </Button>
             </Wrapper>
         </Nav>
     )
@@ -159,9 +154,12 @@ const Wrapper = styled.div`
     }
     @media(max-width : 1024px){
         width: 100%;
-        display: block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px;
         padding-bottom: 30px;
+        margin-top: 20px;
         border-bottom: 3px solid #49c628;
     }
 `
@@ -176,11 +174,7 @@ const Info = styled.div`
     }
 `
 const Heart = styled.div`
-    @media(max-width : 1024px){
-        position: absolute;
-        top: 20px;
-        right: 10px;
-    }
+
 `
 
 

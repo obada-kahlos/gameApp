@@ -3,6 +3,7 @@ import LazyLoad from 'react-lazyload'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Container from '../../component/shared/container/container'
 import IsLoading from '../../component/shared/isloading/isloading'
 import Tag from '../../component/shared/tag/tag'
 import { Title } from '../../component/style/style'
@@ -74,25 +75,7 @@ const GameByTag = () => {
 }
 
 export default GameByTag
-const Container = styled.div`
-    padding-top: 100px;
-    padding-bottom: 50px;
-    padding-left: 30px;
-    padding-right: 30px;
-    @media(min-width : 1200px){
-        width: 1170px;
-        margin: 0 auto;
-    }
-    @media(max-width : 1024px){
-        padding-top: 30px;
-    }
-    @media(max-width : 768px){
-        width : 100%;
-        margin: 0;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-`
+
 const PlayIconContainer = styled.div`
     position: absolute;
     top: 0;
