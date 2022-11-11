@@ -1,26 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { gameById } from '../../feature/game-by-id-slice';
 import { movieActors, movieImage } from '../../feature/get-movies-info-slice';
 
 const Info = () => {
-    const { moviesImageData, isLoading , movieActorsData } = useSelector((state) => state.getMoviesInfo)
-    console.log(moviesImageData);
+    const { isLoading } = useSelector((state) => state.gameById)
     const params = useParams()
+    console.log(params.id.replace(':', ''));
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(movieImage(params.id.replace(':', '')))
-        dispatch(movieActors(params.id.replace(':', '')))
+        dispatch(gameById(params.id.replace(':', '')))
     }, [dispatch])
-    console.log(movieActorsData);
     return (
         <>
-            <div className='text-[#fff]'>movie</div>
-            {/* {
-                movieActorsData.map((item)=>(
-                    <img src={item.image} alt="" />
-                ))
-            } */}
+            <div className='text-[#fff]'>game</div>
         </>
 
     )

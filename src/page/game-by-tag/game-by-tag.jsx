@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import IsLoading from '../../component/shared/isloading/isloading'
 import Tag from '../../component/shared/tag/tag'
+import { Title } from '../../component/style/style'
+import { gameByTag } from '../../feature/game-by-tag-slice'
 import { popularMovies } from '../../feature/popular-movies-slice'
 
-const PopularMovies = () => {
+const GameByTag = () => {
 
-    const { popularMoviesData, isLoading } = useSelector((state) => state.popularMovies)
+    const { gameByTagData, isLoading } = useSelector((state) => state.gameByTag)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(popularMovies())
+        dispatch(gameByTag('shooter'))
     }, [,])
+    console.log(gameByTagData);
     return (
         <>
             {
@@ -27,31 +31,32 @@ const PopularMovies = () => {
                     </style>
                 </> :
                     <Container className=''>
-                        <h1 className='mb-[10px] text-[30px] text-white'> Popular Movies. </h1>
+                        <Title> Games By Tag. </Title>
                         <div className='grid grid-cols-12 lg:gap-10 gap-4'>
                             {
-                                popularMoviesData.map((info, key) => (
-                                    <Wrapper className='lg:col-span-6 col-span-12 cursor-pointer' key={key}>
-                                        <div className='grid grid-cols-12 md:gap-3 gap-1'>
-                                            <div className='sm:col-span-4 col-span-6  relative overflow-hidden'>
+                                gameByTagData.slice(0,8).map((game) => (
+                                    <Wrapper className='md:col-span-6 col-span-12 cursor-pointer' key={game.id}>
+                                        <div className=''>
+                                            <div className='relative overflow-hidden'>
                                                 <LazyLoad offset={50} height={300} once>
-                                                    <img src={info.poster} alt={info.title} className='opacity-[0.8] rounded-[5px] h-[240px] w-full' />
+                                                    <img src={game.thumbnail} alt={game.title} className='opacity-[0.8] rounded-[5px] h-[240px] w-full' />
                                                 </LazyLoad>
                                                 <PlayIconContainer className=''>
                                                     <PlayIcon> <ion-icon name="play-outline"></ion-icon> </PlayIcon>
                                                 </PlayIconContainer>
                                             </div>
-                                            <div className='sm:col-span-8 col-span-6'>
-                                                <div className='flex justify-between flex-col  h-[240px]'>
+                                            <div className='mt-[20px]'>
+                                                <div className='flex justify-between flex-col h-[220px] py-2'>
                                                     <div className='flex flex-col gap-2 overflow-hidden'>
-                                                        <h2 className='text-main-color font-bold'> {info.title} </h2>
-                                                        <div className='text-[#fff] p-1 rounded-[2px] w-fit flex gap-1'>
-                                                            <p className='font-bold'> {info.vote} </p>
+                                                        <h2 className='text-main-color font-bold'> {game.title} </h2>
+                                                        <p className='text-[#fff] text-[14px]'> {game.short_description.slice(0, 150)}... </p>
+                                                        <div className='text-[#fff] rounded-[2px] w-fit flex items-center gap-1'>
+                                                            <p className=''> developer: {game.developer} </p>
                                                             <span className='flex justify-center items-center text-main-color'><ion-icon name="star"></ion-icon></span>
                                                         </div>
-                                                        <p className='text-[#fff] text-[14px] sm:block hidden'> {info.description.slice(0, 150)}... </p>
+                                                        <p className='text-white'> platform: {game.platform} </p>
                                                     </div>
-                                                    <Tag genres={info.genres}/>
+                                                    <Tag genre={game.genre}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +70,7 @@ const PopularMovies = () => {
     )
 }
 
-export default PopularMovies
+export default GameByTag
 const Container = styled.div`
     padding-top: 100px;
     padding-bottom: 50px;

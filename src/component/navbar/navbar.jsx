@@ -1,28 +1,29 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { Button } from '../style/style'
 
-const Navbar = ({nav}) => {
+const Navbar = ({ nav }) => {
     const navbarData = [
         {
             to: '/',
-            icon: 'tv-outline',
+            icon: 'home-outline',
             title: 'Home',
         },
         {
-            to: '/o',
+            to: 'o',
             icon: 'color-palette-outline',
             title: 'Genres'
         },
         {
-            to: '/o',
+            to: 'o',
             icon: 'earth-outline',
             title: 'Top Movies',
         },
         {
-            to: 'popular',
+            to: 'tag',
             icon: 'bar-chart-outline',
-            title: 'popular',
+            title: 'Games By Tag ',
         }
     ]
     return (
@@ -40,15 +41,12 @@ const Navbar = ({nav}) => {
                 }
             </Ul>
             <Wrapper className=''>
-                {/* <Info className=''>
-                    <p> {user.name} </p>
-                    <img src={user.image} alt="profileImage" />
-                </Info> */}
                 <NavLink to='favorite-movies'>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
                     </Heart>
                 </NavLink>
+                <Button> Login </Button>
             </Wrapper>
         </Nav>
     )

@@ -17,6 +17,7 @@ import { listOfGame } from '../../feature/game-list-slice';
 import ListOfButtons from '../../component/shared/list-of-buttons/list-of-buttons';
 import { platform } from '../../feature/games-by-platform-slice';
 import Loader from '../../component/loader/loader';
+import { Link } from 'react-router-dom';
 const MainPage = () => {
 
 
@@ -42,7 +43,7 @@ const MainPage = () => {
     dispatch(platform('browser'));
   }
 
-  const [showMore, setShowMore] = useState(12)
+  const [showMore, setShowMore] = useState(32)
   const handleShowMore = () => {
     setShowMore(showMore + 12)
   }
@@ -85,15 +86,17 @@ const MainPage = () => {
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                   {
                     dataList.slice(0, 8).map((game) => (
-                      <GameCard
-                        key={game.id}
-                        alt={game.title}
-                        image={game.thumbnail}
-                        title={game.title}
-                        description={game.short_description.slice(0, 70)}
-                        genre={game.genre}
-                        width={'300px'}
-                      />
+                      <Link to={`/info:${game.id}`}>
+                        <GameCard
+                          key={game.id}
+                          alt={game.title}
+                          image={game.thumbnail}
+                          title={game.title}
+                          description={game.short_description.slice(0, 70)}
+                          genre={game.genre}
+                          width={'300px'}
+                        />
+                      </Link>
                     ))
                   }
                 </div>
@@ -107,7 +110,7 @@ const MainPage = () => {
                 isLoadingPlatform ? <div className='flex justify-center items-center h-[600px]'> <Loader /> </div> :
                   <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
-                      platformData.slice(0, showMore).map((game) => (
+                      platformData.slice(20, showMore).map((game) => (
                         <GameCard
                           key={game.id}
                           alt={game.title}
@@ -124,7 +127,7 @@ const MainPage = () => {
               <div className='my-[30px] flex justify-center items-center gap-4'>
                 <Button onClick={handleShowMore}> Show More </Button>
                 {
-                  showMore > 12 ?  <Button onClick={handleShowLess}> Show Less </Button> : null
+                  showMore > 32 ?  <Button onClick={handleShowLess}> Show Less </Button> : null
                 }
               </div>
             </Container>

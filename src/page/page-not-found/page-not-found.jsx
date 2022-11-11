@@ -15,7 +15,7 @@ const PageNotFound = () => {
                     </div>
                     <h2>404 - Page not found</h2>
                     <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-                    <a onClick={()=> navigate('/main-page')}>Go To Homepage</a>
+                    <a onClick={()=> navigate('/')}>Go To Homepage</a>
                 </div>
             </div>
             <style>

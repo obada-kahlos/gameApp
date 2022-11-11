@@ -9,7 +9,8 @@ import getMoviesInfoSlice from '../feature/get-movies-info-slice'
 //// Game Api
 import getGameListDataSlice from '../feature/game-list-slice'
 import gamesByPlatformSlice from '../feature/games-by-platform-slice'
-
+import gameByIdSlice from '../feature/game-by-id-slice'
+import gameByTagSlice from '../feature/game-by-tag-slice' 
 export default configureStore({
     reducer: {
         register,
@@ -20,5 +21,8 @@ export default configureStore({
         getMoviesInfo : getMoviesInfoSlice,
         gameList: getGameListDataSlice,
         platforms : gamesByPlatformSlice,
+        gameById : gameByIdSlice,
+        gameByTag : gameByTagSlice,
+
     }
 })

@@ -3,20 +3,20 @@ import axios from 'axios'
 
 const initialState = {
     isLoading: false,
-    dataList: [],
+    gameByTagData: [],
 }
 
-
-
-export const listOfGame = createAsyncThunk('gameList/listOfGame', async (_, thunkAPI) => {
+export const gameByTag = createAsyncThunk('ByTag/gameByTag', async (tag, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
     try {
-        const res = await axios.get('https://free-to-play-games-database.p.rapidapi.com/api/games', {
+        const res = await axios.get(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${tag}`,
+        {
             headers: {
                 'X-RapidAPI-Key': '41e3ef3027msh868ecd9c1c07686p14d5eejsna62617d295f4',
                 'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-            }
+              }
         })
+        console.log(res);
         return res
     } catch (error) {
         return rejectWithValue({
@@ -26,22 +26,22 @@ export const listOfGame = createAsyncThunk('gameList/listOfGame', async (_, thun
 })
 
 
-const getGameListDataSlice = createSlice({
-    name: 'gameList',
+const GamesByTagSlice = createSlice({
+    name: 'ByTag',
     initialState,
     extraReducers: {
-        [listOfGame.pending]: (state, action) => {
+        [gameByTag.pending]: (state, action) => {
             state.isLoading = true
         },
-        [listOfGame.fulfilled]: (state, action) => {
+        [gameByTag.fulfilled]: (state, action) => {
             state.isLoading = false
-            state.dataList = action.payload.data
+            state.gameByTagData = action.payload.data
         },
-        [listOfGame.rejected]: (state, action) => {
+        [gameByTag.rejected]: (state, action) => {
             state.isLoading = false
         }
 
     }
 })
 
-export default getGameListDataSlice.reducer 
+export default GamesByTagSlice.reducer 
