@@ -7,6 +7,9 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { listOfGame } from '../../feature/game-list-slice'
 import { Container } from '../../component/style/style'
+import Popup from '../../component/popup/popup'
+import Login from '../../component/login/login'
+import Rejecter from '../../component/signup/signup'
 
 const Layout = () => {
 
@@ -34,9 +37,19 @@ const Layout = () => {
     window.addEventListener('resize', handleResize)
   }, []);
 
+  const [openPopup, setOpenPopup] = useState(false)
+  const HandleOpenPopup = () => {
+    setOpenPopup((prev) => !prev)
+  }
+
+  const [login, setLogin] = useState(false)
+  const handleLogin = () => {
+    setLogin((prev) => !prev)
+  }
+  console.log(login);
   return (
     <>
-      <Navbar nav={nav} handleShowNav={handleShowNav}/>
+      <Navbar nav={nav} HandleOpenPopup={HandleOpenPopup} handleShowNav={handleShowNav} />
       <div>
         <Outlet />
       </div>
@@ -47,6 +60,11 @@ const Layout = () => {
           {nav ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}
         </NavButton>
       </div>
+      <Popup Title={'Login'} openPopup={openPopup} handleOpen={HandleOpenPopup}>
+        {
+          login === false ? <Login handleLogin={handleLogin} /> : <> <Rejecter handleLogin={handleLogin}/> </> 
+        }
+      </Popup>
     </>
   )
 }

@@ -5,7 +5,7 @@ import InputForm from '../shared/input/input-form';
 import { resetRegister, signUp } from '../../feature/register-slice';
 import Loader from '../loader/loader';
 import { Button, Title } from '../style/style';
-const Rejecter = () => {
+const Rejecter = ({handleLogin}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { isLoading, status, signUpError, token } = useSelector((state) => state.register)
@@ -69,12 +69,10 @@ const Rejecter = () => {
   return (
     <>
       <Title className=''> Rejecter </Title>
-      <p className='text-[#B0B3B9] text-[14px]'> have an account?
-        <Link to='/'>
-          <span className='text-[#49C628] ml-[5px] font-bold cursor-pointer md:text-[14px] text-[12px]'>
+      <p className='text-[#B0B3B9] text-[14px] mb-[20px]'> have an account?
+          <span onClick={handleLogin} className='text-[#49C628] ml-[5px] font-bold cursor-pointer md:text-[14px] text-[12px]'>
             Login Now!
           </span>
-        </Link>
       </p>
       <form onSubmit={handleSummit} className='w-full'>
         {
@@ -96,12 +94,14 @@ const Rejecter = () => {
             />
           ))
         }
-        {
-          signUpError && <span className='text-[red] text-[15px] block'> {signUpError} </span>
-        }
-        {
-          isLoading ? <Loader /> : <Button className=''> Rejecter  </Button>
-        }
+        <div className='flex justify-center items-center mt-[50px]'>
+          {
+            signUpError && <span className='text-[#d74b4b] text-[15px] block'> {signUpError} </span>
+          }
+          {
+            isLoading ? <Loader /> : <Button className=''> Rejecter  </Button>
+          }
+        </div>
       </form>
     </>
   )

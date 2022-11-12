@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from '../style/style'
 
@@ -12,8 +13,6 @@ const Footer = () => {
             <button className='transition-all px-[10px] py-[8px] text-[rgba(255,255,255,0.6)] hover:text-white text-[16px] my-[10px]
               border-[2px] border-[rgba(255,255,255,0.4)] hover:border-main-color flex items-center gap-4 rounded-[4px]
             '
-            
-            
             > Download <ion-icon name="arrow-down-circle-outline"></ion-icon> </button>
           </div>
           <div className='md:col-span-3 col-span-6'>
@@ -28,7 +27,7 @@ const Footer = () => {
           <h3 className='text-[#fff] text-[16px]'> Resources </h3>
             <ul>
               <li className='footer-list'>About Us</li>
-              <li className='footer-list'>Pricing Plan</li>
+              <Link to={'/pricing'}><li className='footer-list'>Pricing Plan</li></Link>
               <li className='footer-list'>Help Center</li>
             </ul>
           </div>

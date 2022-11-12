@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from '../style/style'
 
-const Navbar = ({ nav, handleShowNav }) => {
+const Navbar = ({ nav, handleShowNav , HandleOpenPopup }) => {
     const navbarData = [
         {
             to: '/',
@@ -41,7 +41,7 @@ const Navbar = ({ nav, handleShowNav }) => {
                 }
             </Ul>
             <Wrapper className=''>
-                <Button> Login </Button>
+                <Button onClick={HandleOpenPopup}> Login </Button>
                 <NavLink to='favorite-movies' onClick={handleShowNav}>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
@@ -61,7 +61,7 @@ const Nav = styled.nav`
     width: 100%;
     height: 80px;
     backdrop-filter: blur(20px);
-    z-index : 1000;
+    z-index : 1001;
     display: flex;
     justify-content: space-around;
     align-items: center;

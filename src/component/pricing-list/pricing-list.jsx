@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const PricingList = ({ pricingPlan, pricingPrice, time }) => {
+const PricingList = ({ pricingPlan, pricingPrice, time, offers }) => {
   return (
     <Wrapper>
       <Header>
@@ -11,7 +11,16 @@ const PricingList = ({ pricingPlan, pricingPrice, time }) => {
         </div>
       </Header>
       <Body>
-        <p className='text-[#fff] flex items-center justify-center gap-4'> <span className='text-main-color'><ion-icon name="checkmark-outline"></ion-icon></span> obada kahlous </p>
+        <div className='flex justify-start items-start flex-col gap-4'>
+          {
+            offers?.map((item, key) => (
+              <p className='text-[#fff] flex items-center justify-center gap-4 m-0' key={key}>
+                <span className='text-main-color flex'><ion-icon name="checkmark-outline"></ion-icon></span>
+                {item}
+              </p>
+            ))
+          }
+        </div>
         <Button>
           Get Started
         </Button>
@@ -61,7 +70,8 @@ const Header = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    height: 2px;
+    height: 3px;
+    border-radius: 10px;
     background-color: #49c628;
   }
 `
