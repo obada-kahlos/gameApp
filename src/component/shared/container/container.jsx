@@ -25,8 +25,9 @@ export const Wrapper = styled.div`
     width : 95%;
     padding: 30px 0px;
   }
-  @media(min-width : 992px){
-    width : 960px;
+  @media(max-width : 1024px){
+    width : 90%;
+    padding: 30px 0px;
   }
   @media(min-width : 1200px){
     width : 95%;

@@ -3,17 +3,19 @@ import LazyLoad from 'react-lazyload'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Button from '../../component/shared/button/button'
 import Container from '../../component/shared/container/container'
+import { Title } from '../../component/shared/heading/heading'
 import IsLoading from '../../component/shared/isloading/isloading'
+import ListOfButtons from '../../component/shared/list-of-buttons/list-of-buttons'
 import Tag from '../../component/shared/tag/tag'
-import { Button, Title } from '../../component/style/style'
 import { gameByTag } from '../../feature/game-by-tag-slice'
 
 const GameByTag = () => {
     const { gameByTagData, isLoading } = useSelector((state) => state.gameByTag)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(gameByTag('shooter'))
+        dispatch(gameByTag('Mmorpg'))
     }, [,])
     const [showMore, setShowMore] = useState(17)
     const handleShowMore = () => {
@@ -22,6 +24,26 @@ const GameByTag = () => {
     const handleShowLess = () => {
         setShowMore(showMore - 9)
     }
+    const GameByTagButtons = [
+        {
+            title: 'Shooter',
+        },
+        {
+            title: 'Mmorpg',
+        },
+        {
+            title: 'PVP',
+        },
+        {
+            title: 'Mmofps',
+        },
+        {
+            title: 'Mmofp',
+        },
+        {
+            title: 'Mmofp',
+        },
+    ]
     return (
         <>
             {
@@ -37,10 +59,11 @@ const GameByTag = () => {
                 </> :
                     <Container className=''>
                         <Title> Games By Tag. </Title>
+                        <ListOfButtons items={GameByTagButtons} />
                         <div className='grid grid-cols-12 lg:gap-10 gap-4'>
                             {
-                                gameByTagData.slice(8, showMore).map((game) => (
-                                    <Wrapper className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer' key={game.id}>
+                                gameByTagData.slice(8, showMore).map((game ,key) => (
+                                    <Wrapper key={key} className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer'>
                                         <Link to={`/info:${ game.id }`}>
                                             <div className=''>
                                                 <div className='relative overflow-hidden'>

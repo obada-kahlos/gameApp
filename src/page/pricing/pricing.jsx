@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PricingList from '../../component/pricing-list/pricing-list'
 import Container from '../../component/shared/container/container'
+import { Title } from '../../component/shared/heading/heading'
 
 const Pricing = () => {
 
@@ -43,10 +44,12 @@ const Pricing = () => {
   return (
     <>
       <Container padding={'120px 90px'}>
+        <Title> Pricing Plan. </Title>
         <div className='w-full flex justify-center items-center flex-wrap gap-4'>
           {
             pricingData.map((item, key) => (
               <PricingList
+                key={key}
                 pricingPlan={item.pricingPlan}
                 pricingPrice={item.pricingPrice}
                 time={item.time}

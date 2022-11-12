@@ -6,10 +6,10 @@ import { Link, useParams } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components';
 import GameCard from '../../component/movies-card/game-card';
 import Container from '../../component/shared/container/container';
+import { Title } from '../../component/shared/heading/heading';
 import InfoDescription from '../../component/shared/info-description/info-description';
 import IsLoading from '../../component/shared/isloading/isloading';
 import Tag from '../../component/shared/tag/tag';
-import { Title } from '../../component/style/style';
 import { gameById, resetData } from '../../feature/game-by-id-slice';
 
 const Info = () => {

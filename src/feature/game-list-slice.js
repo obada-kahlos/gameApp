@@ -11,13 +11,13 @@ const initialState = {
 export const listOfGame = createAsyncThunk('gameList/listOfGame', async (_, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
     try {
-        const res = await axios.get('https://free-to-play-games-database.p.rapidapi.com/api/games', {
+        const { data } = await axios.get('https://free-to-play-games-database.p.rapidapi.com/api/games', {
             headers: {
                 'X-RapidAPI-Key': '41e3ef3027msh868ecd9c1c07686p14d5eejsna62617d295f4',
                 'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
             }
         })
-        return res
+        return { data }
     } catch (error) {
         return rejectWithValue({
 

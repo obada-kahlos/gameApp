@@ -8,7 +8,6 @@ import GameCard from '../../component/movies-card/game-card';
 
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Title } from '../../component/style/style';
 
 
 import IsLoading from '../../component/shared/isloading/isloading';
@@ -18,6 +17,9 @@ import { platform } from '../../feature/games-by-platform-slice';
 import Loader from '../../component/loader/loader';
 import { Link } from 'react-router-dom';
 import Container from '../../component/shared/container/container';
+import LazyLoad from 'react-lazyload';
+import Button from '../../component/shared/button/button';
+import { Title } from '../../component/shared/heading/heading';
 const MainPage = () => {
 
 
@@ -85,18 +87,17 @@ const MainPage = () => {
                 <Title className='text-[30px] text-white text-center mb-[20px]'>Top Games.</Title>
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                   {
-                    dataList.slice(0, 8).map((game) => (
-                      <Link to={`/info:${ game.id }`}>
-                        <GameCard
-                          key={game.id}
-                          alt={game.title}
-                          image={game.thumbnail}
-                          title={game.title}
-                          description={game.short_description.slice(0, 70)}
-                          genre={game.genre}
-                          width={'300px'}
-                          height={'190px'}
-                        />
+                    dataList.slice(0, 8).map((game,key) => (
+                      <Link to={`/info:${ game.id }`} key={key}>
+                          <GameCard
+                            alt={game.title}
+                            image={game.thumbnail}
+                            title={game.title}
+                            description={game.short_description.slice(0, 70)}
+                            genre={game.genre}
+                            width={'320px'}
+                            height={'190px'}
+                          />
                       </Link>
                     ))
                   }
@@ -111,16 +112,15 @@ const MainPage = () => {
                 isLoadingPlatform ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div> :
                   <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
-                      platformData.slice(20, showMore).map((game) => (
-                        <Link to={`/info:${ game.id }`}>
+                      platformData.slice(20, showMore).map((game,key) => (
+                        <Link to={`/info:${ game.id }`} key={key}>
                           <GameCard
-                            key={game.id}
                             alt={game.title}
                             image={game.thumbnail}
                             title={game.title}
                             description={game.short_description.slice(0, 70)}
                             genre={game.genre}
-                            width={'300px'}
+                            width={'320px'}
                             height={'190px'}
                           />
                         </Link>

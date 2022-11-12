@@ -1,9 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { Button } from '../style/style'
+import Button from '../shared/button/button'
 
-const Navbar = ({ nav, handleShowNav , HandleOpenPopup }) => {
+const Navbar = ({ nav, handleShowNav, HandleOpenPopup }) => {
     const navbarData = [
         {
             to: '/',
@@ -26,6 +26,7 @@ const Navbar = ({ nav, handleShowNav , HandleOpenPopup }) => {
             title: 'pricing',
         },
     ]
+
     return (
         <Nav active={nav}>
             <Ul>
@@ -60,7 +61,7 @@ const Nav = styled.nav`
     left: 0;
     width: 100%;
     height: 80px;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(50px);
     z-index : 1001;
     display: flex;
     justify-content: space-around;
@@ -79,9 +80,6 @@ const Nav = styled.nav`
         flex-direction: column-reverse;
         justify-content: flex-end;
         transition: 0.3s ease-in-out;
-    }
-    a.active{
-        color : #49c628;
     }
 `
 const Ul = styled.nav`
@@ -166,16 +164,6 @@ const Wrapper = styled.div`
         padding-bottom: 30px;
         margin-top: 20px;
         border-bottom: 3px solid #49c628;
-    }
-`
-const Info = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    @media(max-width : 1024px){
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-direction: column-reverse;
     }
 `
 const Heart = styled.div`

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../component/navbar/navbar'
 
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import Footer from '../../component/footer/footer'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { listOfGame } from '../../feature/game-list-slice'
-import { Container } from '../../component/style/style'
 import Popup from '../../component/popup/popup'
 import Login from '../../component/login/login'
 import Rejecter from '../../component/signup/signup'
@@ -22,8 +21,6 @@ const Layout = () => {
   useEffect(() => {
     dispatch(listOfGame())
   }, [dispatch])
-  // console.log(gameListData);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,10 +43,10 @@ const Layout = () => {
   const handleLogin = () => {
     setLogin((prev) => !prev)
   }
-  console.log(login);
+
   return (
     <>
-      <Navbar nav={nav} HandleOpenPopup={HandleOpenPopup} handleShowNav={handleShowNav} />
+      <Navbar nav={nav} handleShowNav={handleShowNav} HandleOpenPopup={HandleOpenPopup} />
       <div>
         <Outlet />
       </div>
@@ -62,7 +59,7 @@ const Layout = () => {
       </div>
       <Popup Title={'Login'} openPopup={openPopup} handleOpen={HandleOpenPopup}>
         {
-          login === false ? <Login handleLogin={handleLogin} /> : <> <Rejecter handleLogin={handleLogin}/> </> 
+          login === false ? <Login handleLogin={handleLogin} /> : <> <Rejecter handleLogin={handleLogin} /> </>
         }
       </Popup>
     </>

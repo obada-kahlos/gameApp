@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const ListOfButtons = ({ items }) => {
-    const [active , setActive] = useState(0)
     return (
-        <ul className='flex justify-center items-center gap-4 my-[30px]'>
+        <ul className='flex justify-center items-center flex-wrap gap-4 my-[30px]'>
             {
-                items?.map((item,index) => (
-                    <LI onClick={item.onClick} > {item.title} </LI>
+                items?.map((item,key) => (
+                    <LI onClick={item.onClick} key={key}> {item.title} </LI>
                 ))
             }
         </ul>
@@ -25,6 +24,9 @@ const LI = styled.li`
     &:hover{
         border: 2px solid #49c628;
         color: #49c628;
+    }
+    @media(max-width : 768px){
+        
     }
 `
 

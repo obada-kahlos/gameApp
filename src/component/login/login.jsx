@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../loader/loader';
 import InputForm from '../shared/input/input-form';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { login, resetRegister } from '../../feature/register-slice';
-import { Title, Button } from '../style/style';
+import Button from '../shared/button/button';
+import { Title } from '../shared/heading/heading';
 const Login = ({ handleLogin }) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   const { isLoading, status, loginError } = useSelector((state) => state.register)
 
   useEffect(() => {

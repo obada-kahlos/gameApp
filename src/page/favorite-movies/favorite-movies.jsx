@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React, { useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import { useDispatch, useSelector } from 'react-redux'
@@ -5,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import empty from '../../assets/empty.svg'
-import { Button } from '../../component/style/style'
 import { listOfGame } from '../../feature/game-list-slice'
 
 const FavoriteMovies = () => {

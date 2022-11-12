@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import InputForm from '../shared/input/input-form';
 import { resetRegister, signUp } from '../../feature/register-slice';
 import Loader from '../loader/loader';
-import { Button, Title } from '../style/style';
+import Button from '../shared/button/button';
+import { Title } from '../shared/heading/heading';
 const Rejecter = ({handleLogin}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
