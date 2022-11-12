@@ -6,7 +6,7 @@ import InputForm from '../shared/input/input-form';
 import { useDispatch, useSelector } from 'react-redux'
 import { login, resetRegister } from '../../feature/register-slice';
 import { Title, Button } from '../style/style';
-const Login = ({handleLogin}) => {
+const Login = ({ handleLogin }) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -62,9 +62,9 @@ const Login = ({handleLogin}) => {
     <>
       <Title className=''> Login </Title>
       <p className='text-[#B0B3B9] text-[14px] mb-[20px]'>Don't have an account?
-          <span onClick={handleLogin} className='text-[#49C628] mx-[5px] font-bold cursor-pointer md:text-[14px] text-[12px]'>
-            Create Your Account
-          </span>
+        <span onClick={handleLogin} className='text-[#49C628] mx-[5px] font-bold cursor-pointer md:text-[14px] text-[12px]'>
+          Create Your Account
+        </span>
         it takes less than a minute
       </p>
       <form onSubmit={handleSummit} className='w-full'>
@@ -87,10 +87,10 @@ const Login = ({handleLogin}) => {
             />
           ))
         }
+        {
+          loginError && <span className='text-[red] text-[15px] block'> {loginError} </span>
+        }
         <div className='flex justify-center items-center mt-[50px]'>
-          {
-            loginError && <span className='text-[red] text-[15px] block'> {loginError} </span>
-          }
           {
             isLoading ? <Loader /> : <Button className=''> Login  </Button>
           }

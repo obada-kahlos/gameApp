@@ -94,10 +94,10 @@ const Rejecter = ({handleLogin}) => {
             />
           ))
         }
-        <div className='flex justify-center items-center mt-[50px]'>
           {
             signUpError && <span className='text-[#d74b4b] text-[15px] block'> {signUpError} </span>
           }
+        <div className='flex justify-center items-center mt-[50px]'>
           {
             isLoading ? <Loader /> : <Button className=''> Rejecter  </Button>
           }
