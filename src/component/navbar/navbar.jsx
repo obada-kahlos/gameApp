@@ -80,6 +80,7 @@ const Nav = styled.nav`
         flex-direction: column-reverse;
         justify-content: flex-end;
         transition: 0.3s ease-in-out;
+        z-index : 997;
     }
 `
 const Ul = styled.nav`
