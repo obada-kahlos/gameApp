@@ -24,8 +24,8 @@ function App() {
         <Routes>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<Layout />} >
+            <Route  path="/" element={<MainPage />} />
             <Route path='tag' element={<GameByTag />} />
             <Route path='favorite-movies' element={<FavoriteMovies />} />
             <Route path="info:id" element={<Info />} />

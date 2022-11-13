@@ -37,7 +37,7 @@ export default Popup
 
 const PopupAnimation = keyframes`
     from{
-        transform: translate(-50%,-60%);
+        transform: translate(-50%,-50%);
     }
     to{
         transform: translate(-50%,-50%) ;
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
     z-index: 999;
     backdrop-filter: blur(50px);
     box-shadow: 0 3px 20px 0px rgba(0,0,0,0.5);
-    animation: ${ PopupAnimation } 0.3s linear;
+    animation: ${ PopupAnimation } 0.1s linear;
     @media(max-width : 600px){
         width: 100%;
         height: 100%;

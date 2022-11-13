@@ -32,7 +32,7 @@ const Navbar = ({ nav, handleShowNav, HandleOpenPopup }) => {
             <Ul>
                 {
                     navbarData.map((item, key) => (
-                        <LinkElem to={item.to} key={key} onClick={handleShowNav}>
+                        <LinkElem to={item.to} key={key} onClick={handleShowNav} end>
                             <Li>
                                 <span className='flex items-center justify-center'> <ion-icon name={item.icon}></ion-icon> </span>
                                 <span className='flex justify-center items-center'> {item.title} </span>
@@ -82,6 +82,25 @@ const Nav = styled.nav`
         transition: 0.3s ease-in-out;
         z-index : 997;
     }
+    a.active{
+        position: relative;
+        color: #49c628;
+        &:after{
+        position: absolute;
+        content : '';
+        bottom : 0px;
+        left : 0px;
+        width : 100%;
+        height : 3px;
+        background : #49c628;
+        transition: 0.3s;
+    }
+    @media(max-width : 1024px){
+        :after{
+            width : 60%;
+        }
+    }
+    }
 `
 const Ul = styled.nav`
     display: flex;
@@ -118,7 +137,7 @@ const Li = styled.li`
         bottom : 0px;
         left : 0px;
         width : 0;
-        height : 2px;
+        height : 3px;
         background : #49c628;
         transition: 0.3s;
     }
