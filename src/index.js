@@ -7,6 +7,7 @@ import store from './store/index';
 
 
 import './index.css'
+import ScrollToTop from './component/shared/ScrollToTop/ScrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

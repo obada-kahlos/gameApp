@@ -14,6 +14,7 @@ import { gameByTag } from '../../feature/game-by-tag-slice'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Loader from '../../component/loader/loader'
+import ScrollToTop from '../../component/shared/ScrollToTop/ScrollToTop'
 const GameByTag = () => {
     const { gameByTagData, isLoading } = useSelector((state) => state.gameByTag)
     const dispatch = useDispatch()
@@ -66,63 +67,65 @@ const GameByTag = () => {
                   `}
                     </style>
                 </> :
-                    <Container className=''>
-                        <Title> Games By Tag. </Title>
-                        <ListOfButtons items={GameByTagButtons} />
-                        {
-                            isLoading ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div>
-                                :
-                                <>
-                                    <div className='grid grid-cols-12 lg:gap-10 gap-4'>
-                                        {
-                                            gameByTagData.slice(8, showMore).map((game, key) => (
-                                                <Wrapper key={key} className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer'>
-                                                    <Link to={`/info:${ game.id }`}>
-                                                        <div className=''>
-                                                            <div className='relative overflow-hidden'>
-                                                                <LazyLoadImage
-                                                                    src={game.thumbnail}
-                                                                    alt={game.title}
-                                                                    height={'240px'}
-                                                                    width={'100%'}
-                                                                    effect={'blur'}
-                                                                    delayTime={1000}
-                                                                    threshold={1000}
-                                                                    placeholderSrc={game.thumbnail}
-                                                                />
-                                                                <PlayIconContainer className=''>
-                                                                    <PlayIcon> <ion-icon name="play-outline"></ion-icon> </PlayIcon>
-                                                                </PlayIconContainer>
-                                                            </div>
-                                                            <div className='mt-[20px]'>
-                                                                <div className='flex justify-between flex-col h-[220px] py-2'>
-                                                                    <div className='flex flex-col gap-2 overflow-hidden'>
-                                                                        <h2 className='text-main-color font-bold'> {game.title} </h2>
-                                                                        <p className='text-[#fff] text-[14px]'> {game.short_description.slice(0, 150)}... </p>
-                                                                        <div className='text-[#fff] rounded-[2px] w-fit flex items-center gap-1'>
-                                                                            <p className=''> developer: {game.developer} </p>
-                                                                            <span className='flex justify-center items-center text-main-color'><ion-icon name="star"></ion-icon></span>
+                    <>
+                        <Container className=''>
+                            <Title> Games By Tag. </Title>
+                            <ListOfButtons items={GameByTagButtons} />
+                            {
+                                isLoading ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div>
+                                    :
+                                    <>
+                                        <div className='grid grid-cols-12 lg:gap-10 gap-4'>
+                                            {
+                                                gameByTagData.slice(8, showMore).map((game, key) => (
+                                                    <Wrapper key={key} className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer'>
+                                                        <Link to={`/info:${ game.id }`}>
+                                                            <div className=''>
+                                                                <div className='relative overflow-hidden'>
+                                                                    <LazyLoadImage
+                                                                        src={game.thumbnail}
+                                                                        alt={game.title}
+                                                                        height={'240px'}
+                                                                        width={'100%'}
+                                                                        effect={'blur'}
+                                                                        delayTime={1000}
+                                                                        threshold={1000}
+                                                                        placeholderSrc={game.thumbnail}
+                                                                    />
+                                                                    <PlayIconContainer className=''>
+                                                                        <PlayIcon> <ion-icon name="play-outline"></ion-icon> </PlayIcon>
+                                                                    </PlayIconContainer>
+                                                                </div>
+                                                                <div className='mt-[20px]'>
+                                                                    <div className='flex justify-between flex-col h-[220px] py-2'>
+                                                                        <div className='flex flex-col gap-2 overflow-hidden'>
+                                                                            <h2 className='text-main-color font-bold'> {game.title} </h2>
+                                                                            <p className='text-[#fff] text-[14px]'> {game.short_description.slice(0, 150)}... </p>
+                                                                            <div className='text-[#fff] rounded-[2px] w-fit flex items-center gap-1'>
+                                                                                <p className=''> developer: {game.developer} </p>
+                                                                                <span className='flex justify-center items-center text-main-color'><ion-icon name="star"></ion-icon></span>
+                                                                            </div>
+                                                                            <p className='text-white'> platform: {game.platform} </p>
                                                                         </div>
-                                                                        <p className='text-white'> platform: {game.platform} </p>
+                                                                        <Tag genre={game.genre} />
                                                                     </div>
-                                                                    <Tag genre={game.genre} />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </Link>
-                                                </Wrapper>
-                                            ))
-                                        }
-                                    </div>
-                                    <div className='my-[30px] flex justify-center items-center gap-4'>
-                                        <Button onClick={handleShowMore}> Show More </Button>
-                                        {
-                                            showMore > 17 ? <Button onClick={handleShowLess}> Show Less </Button> : null
-                                        }
-                                    </div>
-                                </>
-                        }
-                    </Container>
+                                                        </Link>
+                                                    </Wrapper>
+                                                ))
+                                            }
+                                        </div>
+                                        <div className='my-[30px] flex justify-center items-center gap-4'>
+                                            <Button onClick={handleShowMore}> Show More </Button>
+                                            {
+                                                showMore > 17 ? <Button onClick={handleShowLess}> Show Less </Button> : null
+                                            }
+                                        </div>
+                                    </>
+                            }
+                        </Container>
+                    </>
             }
         </>
     )
