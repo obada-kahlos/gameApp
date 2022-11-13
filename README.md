@@ -1,5 +1,5 @@
 # gameApp
-App link https://ubiquitous-gaufre-2ed377.netlify.app/ 
+App link https://gmae-app.netlify.app
 
 Api i used from https://rapidapi.com
 
