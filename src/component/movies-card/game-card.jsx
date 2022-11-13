@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from '../shared/image/image'
 import Tag from '../shared/tag/tag'
 
 const GameCard = ({ image, alt, width, height, margin, title, description, className, genre }) => {
   return (
-    <Container className={className} width={width}  margin={margin}>
+    <Container className={className} width={width} margin={margin}>
       <div className='h-full'>
-        <Img src={image} alt={alt} height={height}/>
+          <Image alt={alt} height={height} image={image}/>
       </div>
       <div className='h-[180px] flex justify-between flex-col'>
         <Title className='my-[5px]'> {title} </Title>

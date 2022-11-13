@@ -6,11 +6,13 @@ import styled from 'styled-components'
 import Button from '../../component/shared/button/button'
 import Container from '../../component/shared/container/container'
 import { Title } from '../../component/shared/heading/heading'
+import Image from '../../component/shared/image/image'
 import IsLoading from '../../component/shared/isloading/isloading'
 import ListOfButtons from '../../component/shared/list-of-buttons/list-of-buttons'
 import Tag from '../../component/shared/tag/tag'
 import { gameByTag } from '../../feature/game-by-tag-slice'
-
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const GameByTag = () => {
     const { gameByTagData, isLoading } = useSelector((state) => state.gameByTag)
     const dispatch = useDispatch()
@@ -62,14 +64,21 @@ const GameByTag = () => {
                         <ListOfButtons items={GameByTagButtons} />
                         <div className='grid grid-cols-12 lg:gap-10 gap-4'>
                             {
-                                gameByTagData.slice(8, showMore).map((game ,key) => (
+                                gameByTagData.slice(8, showMore).map((game, key) => (
                                     <Wrapper key={key} className='lg:col-span-4 md:col-span-6 col-span-12 cursor-pointer'>
                                         <Link to={`/info:${ game.id }`}>
                                             <div className=''>
                                                 <div className='relative overflow-hidden'>
-                                                    <LazyLoad offset={50} height={300} once>
-                                                        <img src={game.thumbnail} alt={game.title} className='opacity-[0.8] rounded-[5px] h-[240px] w-full' />
-                                                    </LazyLoad>
+                                                    <LazyLoadImage
+                                                        src={game.thumbnail}
+                                                        alt={game.title}
+                                                        height={'240px'}
+                                                        width={'100%'}
+                                                        effect={'blur'}
+                                                        delayTime={1000}
+                                                        threshold={1000}
+                                                        placeholderSrc={game.thumbnail}
+                                                    />
                                                     <PlayIconContainer className=''>
                                                         <PlayIcon> <ion-icon name="play-outline"></ion-icon> </PlayIcon>
                                                     </PlayIconContainer>

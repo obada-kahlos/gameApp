@@ -7,11 +7,13 @@ import styled, { keyframes } from 'styled-components';
 import GameCard from '../../component/movies-card/game-card';
 import Container from '../../component/shared/container/container';
 import { Title } from '../../component/shared/heading/heading';
+import Image from '../../component/shared/image/image';
 import InfoDescription from '../../component/shared/info-description/info-description';
 import IsLoading from '../../component/shared/isloading/isloading';
 import Tag from '../../component/shared/tag/tag';
 import { gameById, resetData } from '../../feature/game-by-id-slice';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const Info = () => {
     const { isLoading, data } = useSelector((state) => state.gameById)
     const { dataList } = useSelector((state) => state.gameList)
@@ -20,7 +22,8 @@ const Info = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(gameById(params.id.replace(':', '')))
-    }, [dispatch,params])
+    }, [dispatch, params])
+    console.log(data);
     return (
         <>
             {
@@ -40,9 +43,15 @@ const Info = () => {
                             <div className='md:col-span-4 col-span-12'>
                                 <h2 className='text-white md:text-[26px] text-[20px]'> {data?.title} </h2>
                                 <p className='text-[rgba(255,255,255,0.8)] mb-[10px]'> {data?.short_description.slice(0, 80)} </p>
-                                <LazyLoad offset={50} height={300} once>
-                                    <img src={data?.thumbnail} alt={data?.title} className='md:w-full w-[350px]' />
-                                </LazyLoad>
+                                <LazyLoadImage
+                                    src={data?.thumbnail}
+                                    alt={data?.title}
+                                    height={''}
+                                    width={'100%'}
+                                    effect={'blur'}
+                                    placeholderSrc={data?.thumbnail}
+                                />
+                                {/* <img src={data?.thumbnail} alt={data?.title} className='md:w-full w-[350px]' /> */}
                             </div>
                             <div className='md:col-span-8 col-span-12 md:mt-[65px] mt-[30px]'>
                                 <h2 className='text-white md:text-[26px] text-[20px]'> About the game. </h2>
@@ -77,12 +86,18 @@ const Info = () => {
                         </div>
                         <div className='flex gap-4 overflow-x-auto my-[30px]'>
                             {
-                                data?.screenshots?.map((image) => (
-                                    <LazyLoad offset={50} height={300} once>
-                                        <Screenshots className='w-[300px] h-[170px]'>
-                                            <img src={image?.image} alt="img" width='100%' height='100%' />
-                                        </Screenshots>
-                                    </LazyLoad>
+                                data?.screenshots?.map((image, key) => (
+                                    <Screenshots className='w-[300px] h-[170px]' key={key}>
+                                        <LazyLoadImage
+                                            src={image?.image}
+                                            alt={image?.image}
+                                            height={'240px'}
+                                            width={'100%'}
+                                            effect={'blur'}
+                                            placeholderSrc={image?.image}
+                                        />
+                                        {/* <img src={image?.image} alt="img" width='100%' height='100%' /> */}
+                                    </Screenshots>
                                 ))
                             }
                         </div>
@@ -92,10 +107,9 @@ const Info = () => {
                 <Title className='text-[30px] text-white text-center mb-[20px]'>Games you may like.</Title>
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                     {
-                        dataList.slice(124,128).map((game) => (
-                            <Link to={`/info:${ game.id }`}>
+                        dataList.slice(124, 128).map((game, key) => (
+                            <Link to={`/info:${ game.id }`} key={key}>
                                 <GameCard
-                                    key={game.id}
                                     alt={game.title}
                                     image={game.thumbnail}
                                     title={game.title}
