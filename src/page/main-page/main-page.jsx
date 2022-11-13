@@ -87,17 +87,17 @@ const MainPage = () => {
                 <Title className='text-[30px] text-white text-center mb-[20px]'>Top Games.</Title>
                 <div className='flex justify-center items-start flex-wrap gap-[25px]'>
                   {
-                    dataList.slice(0, 8).map((game,key) => (
+                    dataList.slice(0, 8).map((game, key) => (
                       <Link to={`/info:${ game.id }`} key={key}>
-                          <GameCard
-                            alt={game.title}
-                            image={game.thumbnail}
-                            title={game.title}
-                            description={game.short_description.slice(0, 70)}
-                            genre={game.genre}
-                            width={'320px'}
-                            height={'190px'}
-                          />
+                        <GameCard
+                          alt={game.title}
+                          image={game.thumbnail}
+                          title={game.title}
+                          description={game.short_description.slice(0, 70)}
+                          genre={game.genre}
+                          width={'320px'}
+                          height={'190px'}
+                        />
                       </Link>
                     ))
                   }
@@ -110,30 +110,32 @@ const MainPage = () => {
               <ListOfButtons items={platformButtons} />
               {
                 isLoadingPlatform ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div> :
-                  <div className='flex justify-center items-start flex-wrap gap-[25px]'>
-                    {
-                      platformData.slice(20, showMore).map((game,key) => (
-                        <Link to={`/info:${ game.id }`} key={key}>
-                          <GameCard
-                            alt={game.title}
-                            image={game.thumbnail}
-                            title={game.title}
-                            description={game.short_description.slice(0, 70)}
-                            genre={game.genre}
-                            width={'320px'}
-                            height={'190px'}
-                          />
-                        </Link>
-                      ))
-                    }
-                  </div>
+                  <>
+                    <div className='flex justify-center items-start flex-wrap gap-[25px]'>
+                      {
+                        platformData.slice(20, showMore).map((game, key) => (
+                          <Link to={`/info:${ game.id }`} key={key}>
+                            <GameCard
+                              alt={game.title}
+                              image={game.thumbnail}
+                              title={game.title}
+                              description={game.short_description.slice(0, 70)}
+                              genre={game.genre}
+                              width={'320px'}
+                              height={'190px'}
+                            />
+                          </Link>
+                        ))
+                      }
+                    </div>
+                    <div className='my-[30px] flex justify-center items-center gap-4'>
+                      <Button onClick={handleShowMore}> Show More </Button>
+                      {
+                        showMore > 32 ? <Button onClick={handleShowLess}> Show Less </Button> : null
+                      }
+                    </div>
+                  </>
               }
-              <div className='my-[30px] flex justify-center items-center gap-4'>
-                <Button onClick={handleShowMore}> Show More </Button>
-                {
-                  showMore > 32 ? <Button onClick={handleShowLess}> Show Less </Button> : null
-                }
-              </div>
             </Container>
           </>
       }
