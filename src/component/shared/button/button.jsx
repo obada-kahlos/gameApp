@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Button = ({onClick , children}) => {
+const Button = ({ onClick, children, className }) => {
   return (
-    <Btn onClick={onClick}> {children} </Btn>
-  ) 
+    <Btn onClick={onClick} className={className}> {children} </Btn>
+  )
 }
 
 export default Button

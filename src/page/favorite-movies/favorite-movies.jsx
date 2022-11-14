@@ -1,4 +1,3 @@
-import { Button } from '@mui/material'
 import React, { useEffect } from 'react'
 import LazyLoad from 'react-lazyload'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,10 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import empty from '../../assets/empty.svg'
+import Button from '../../component/shared/button/button'
 import { listOfGame } from '../../feature/game-list-slice'
 
 const FavoriteMovies = () => {
-    const { dataList, isLoading } = useSelector((state) => state.gameList)
+    const { dataList } = useSelector((state) => state.gameList)
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -22,9 +22,9 @@ const FavoriteMovies = () => {
         <Container>
             <Empty>
                 <div>
-                    <p className='md:text-[24px] text-[18px] mb-[20px]' > You don't have any anime in your,<br /> <span className='md:text-[40px] text-[24px] font-mono'> favorites! </span> </p>
-                    <p className='mt-[10px] md:text-[18px] text-[14px]'> Lets add Some Movies To Your Favorite </p>
-                    <Button onClick={() => { navigate(-1) }}> Add some </Button>
+                    <p className='md:text-[24px] text-[18px] mb-[20px]' > You don't have any <strong>Game</strong> in your,<br /> <span className='md:text-[40px] text-[24px] font-mono'> favorites! </span> </p>
+                    <p className='mt-[10px] md:text-[18px] text-[14px]'> Lets add Some <strong>Games</strong> To Your Favorite </p>
+                    <Button onClick={() => { navigate(-1) }} className='mt-[30px]'> Add some </Button>
                 </div>
                 <LazyLoad offset={50} height={300} once>
                     <img src={empty} alt="" width='350px' height='300px' />

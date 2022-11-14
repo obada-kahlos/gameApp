@@ -52,7 +52,7 @@ const Layout = () => {
       </div>
       <Footer />
       <div className='fixed lg:top-[-60px] bottom-0 lg:right-0 w-[120px] h-[120px] rounded-full bg-main-color lg:block hidden'></div>
-      <div className='lg:hidden block fixed bottom-10 right-10'>
+      <div className='lg:hidden block fixed bottom-10 right-10 z-[9999999999]'>
         <NavButton onClick={handleShowNav} >
           {nav ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}
         </NavButton>

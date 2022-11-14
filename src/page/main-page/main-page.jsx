@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import img from '../../assets/slider-bg.jpg'
+import img from '../../assets/bg-games.jpg'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,7 +17,6 @@ import { platform } from '../../feature/games-by-platform-slice';
 import Loader from '../../component/loader/loader';
 import { Link } from 'react-router-dom';
 import Container from '../../component/shared/container/container';
-import LazyLoad from 'react-lazyload';
 import Button from '../../component/shared/button/button';
 import { Title } from '../../component/shared/heading/heading';
 const MainPage = () => {
@@ -103,6 +102,7 @@ const MainPage = () => {
                   }
                 </div>
               </Container>
+              <Layout></Layout>
             </Header>
             <Container>
 
@@ -147,6 +147,7 @@ const MainPage = () => {
 export default MainPage
 
 const Header = styled.header`
+  position: relative;
   height: auto;
   background: url(${ img }) no-repeat;
   background-position: center;
@@ -158,6 +159,7 @@ const Header = styled.header`
   padding-right: 30px;
   overflow: hidden;
   color: #fff;
+  z-index: 995;
   @media(max-width : 1024px){
     padding-left: 5px;
     padding-right: 5px;
@@ -166,4 +168,13 @@ const Header = styled.header`
     padding-left: 5px;
     padding-right: 5px;
   }
+`
+const Layout = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 1;
 `

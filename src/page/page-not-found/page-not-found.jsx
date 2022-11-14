@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import errorImage from '../../assets/bg-games.jfif'
+import errorImage from '../../assets/bg-games.jpg'
 const PageNotFound = () => {
 
     const navigate = useNavigate()

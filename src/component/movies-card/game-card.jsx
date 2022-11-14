@@ -7,7 +7,7 @@ const GameCard = ({ image, alt, width, height, margin, title, description, class
   return (
     <Container className={className} width={width} margin={margin}>
       <div className='h-full'>
-          <Image alt={alt} height={height} image={image}/>
+        <Image alt={alt} height={height} image={image} />
       </div>
       <div className='h-[180px] flex justify-between flex-col'>
         <Title className='my-[5px]'> {title} </Title>

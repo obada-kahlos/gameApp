@@ -43,7 +43,7 @@ const Navbar = ({ nav, handleShowNav, HandleOpenPopup }) => {
             </Ul>
             <Wrapper className=''>
                 <Button onClick={HandleOpenPopup}> Login </Button>
-                <NavLink to='favorite-movies' onClick={handleShowNav}>
+                <NavLink to='favorite-games' onClick={handleShowNav}>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
                     </Heart>
@@ -94,6 +94,9 @@ const Nav = styled.nav`
         height : 3px;
         background : #49c628;
         transition: 0.3s;
+        &::after:last-of-type{
+            height: 0;
+        }
     }
     @media(max-width : 1024px){
         :after{

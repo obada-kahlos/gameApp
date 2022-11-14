@@ -96,7 +96,6 @@ const Info = () => {
                                             effect={'blur'}
                                             placeholderSrc={image?.image}
                                         />
-                                        {/* <img src={image?.image} alt="img" width='100%' height='100%' /> */}
                                     </Screenshots>
                                 ))
                             }
