@@ -43,11 +43,11 @@ const Navbar = ({ nav, handleShowNav, HandleOpenPopup }) => {
             </Ul>
             <Wrapper className=''>
                 <Button onClick={HandleOpenPopup}> Login </Button>
-                <NavLink to='favorite-games' onClick={handleShowNav}>
+                {/* <NavLink to='favorite-games' onClick={handleShowNav}>
                     <Heart>
                         <span className='flex items-center justify-center text-[30px] text-[red]'> <ion-icon name="heart"></ion-icon> </span>
                     </Heart>
-                </NavLink>
+                </NavLink> */}
             </Wrapper>
         </Nav>
     )

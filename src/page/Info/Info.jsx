@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import LazyLoad from 'react-lazyload';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components';
 import GameCard from '../../component/movies-card/game-card';
 import Container from '../../component/shared/container/container';
 import { Title } from '../../component/shared/heading/heading';
-import Image from '../../component/shared/image/image';
 import InfoDescription from '../../component/shared/info-description/info-description';
 import IsLoading from '../../component/shared/isloading/isloading';
 import Tag from '../../component/shared/tag/tag';
