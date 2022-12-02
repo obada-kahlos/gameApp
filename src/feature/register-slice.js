@@ -66,13 +66,10 @@ const registerSlice = createSlice({
             state.token = action.payload.data.data.token
             state.userData = action.payload.data.data.user
             console.log(action.payload);
-            // localStorage.setItem("movies", state.token);
-            // localStorage.setItem("userData", JSON.stringify(state.userData));
         },
         [signUp.rejected]:(state , action) =>{
             state.isLoading = false
         },
-
         [login.pending]:(state , action) =>{
             state.isLoading = true
         },
@@ -83,8 +80,6 @@ const registerSlice = createSlice({
             console.log(action.payload);
             state.token = action.payload.data.data.token
             state.userData = action.payload.data.data.user
-            // localStorage.setItem("movies", state.token);    
-            // localStorage.setItem("userData", JSON.stringify(state.userData));
         },
         [login.rejected]:(state , action) =>{
             state.isLoading = false

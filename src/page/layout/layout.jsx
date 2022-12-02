@@ -57,7 +57,7 @@ const Layout = () => {
           {nav ? <ion-icon name="close-outline"></ion-icon> : <ion-icon name="menu-outline"></ion-icon>}
         </NavButton>
       </div>
-      <Popup Title={'Login'} openPopup={openPopup} handleOpen={HandleOpenPopup}>
+      <Popup Title={login === false ? 'Login' : 'Rejecter'} openPopup={openPopup} handleOpen={HandleOpenPopup}>
         {
           login === false ? <Login handleLogin={handleLogin} /> : <> <Rejecter handleLogin={handleLogin} /> </>
         }

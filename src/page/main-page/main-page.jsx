@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import Container from '../../component/shared/container/container';
 import Button from '../../component/shared/button/button';
 import { Title } from '../../component/shared/heading/heading';
+import { gameBySearch } from '../../feature/search-by-name-slice';
 const MainPage = () => {
 
 
@@ -66,6 +67,13 @@ const MainPage = () => {
       onClick: handlePlatformAll
     },
   ]
+  const [search, setSearch] = useState('')
+  const handelSearch = (word) => {
+    setSearch(word.target.value)
+    dispatch(gameBySearch(search))
+  }
+  console.log(search);
+
   return (
     <>
       {
@@ -105,9 +113,10 @@ const MainPage = () => {
               <Layout></Layout>
             </Header>
             <Container>
-
               <Title> Games by platform. </Title>
-              <ListOfButtons items={platformButtons} />
+              <div className='flex justify-center items-center'>
+                <ListOfButtons items={platformButtons} />
+              </div>
               {
                 isLoadingPlatform ? <div className='flex justify-center items-center h-[300px]'> <Loader /> </div> :
                   <>
