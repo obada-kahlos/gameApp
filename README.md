@@ -1,5 +1,5 @@
 # gameApp
-App link https://gmae-app.netlify.app
+App link https://game-cky5i1kvf-obada-kahlos.vercel.app/
 
 Api i used from https://rapidapi.com
 
